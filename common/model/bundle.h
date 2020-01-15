@@ -175,6 +175,13 @@ void bundle_dump(bundle_transactions_t *bundle);
 #define BUNDLE_FOREACH(txs, tx) \
   for (tx = (iota_transaction_t *)utarray_front(txs); tx != NULL; tx = (iota_transaction_t *)utarray_next(txs, tx))
 
+/**
+ * @brief The reverse bundle iterator.
+ *
+ */
+#define BUNDLE_FOREACH_REV(txs, tx)					\
+  for (tx = (iota_transaction_t *)utarray_back(txs); tx != NULL; tx = (iota_transaction_t *)utarray_prev(txs, tx))
+
 #ifdef __cplusplus
 }
 #endif

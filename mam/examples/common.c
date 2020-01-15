@@ -66,7 +66,7 @@ retcode_t send_bundle(char const *const host, uint16_t const port, bundle_transa
   iota_transaction_t *curr_tx = NULL;
   flex_trit_t trits_8019[FLEX_TRIT_SIZE_8019];
 
-  BUNDLE_FOREACH(bundle, curr_tx) {
+  BUNDLE_FOREACH_REV(bundle, curr_tx) {
     transaction_serialize_on_flex_trits(curr_tx, trits_8019);
     hash_array_push(raw_trytes, trits_8019);
   }
