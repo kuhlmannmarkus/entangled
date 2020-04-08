@@ -95,7 +95,7 @@ done:
 }
 
 retcode_t json_get_node_info_deserialize_response(char const *const obj, get_node_info_res_t *out) {
-  retcode_t ret = RC_ERROR;
+  retcode_t ret = RC_OK;
   log_debug(json_logger_id, "[%s:%d] %s\n", __func__, __LINE__, obj);
 
   if (!obj || !out) {
@@ -108,75 +108,89 @@ retcode_t json_get_node_info_deserialize_response(char const *const obj, get_nod
 
   JSON_CHECK_ERROR(json_obj, json_item, json_logger_id);
 
-  ret = json_get_string(json_obj, app_name, out->app_name);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_string(json_obj, app_name, out->app_name);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_string(json_obj, app_name, out->app_name);
 
-  ret = json_get_string(json_obj, app_version, out->app_version);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_string(json_obj, app_version, out->app_version);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_string(json_obj, app_version, out->app_version);
 
-  ret = json_string_hash_to_flex_trits(json_obj, latest_milestone, out->latest_milestone);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_string_hash_to_flex_trits(json_obj, latest_milestone, out->latest_milestone);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_string_hash_to_flex_trits(json_obj, latest_milestone, out->latest_milestone);
 
-  ret = json_get_uint32(json_obj, latest_milestone_idx, &out->latest_milestone_index);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint32(json_obj, latest_milestone_idx, &out->latest_milestone_index);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint32(json_obj, latest_milestone_idx, &out->latest_milestone_index);
 
-  ret =
-      json_string_hash_to_flex_trits(json_obj, latest_solid_subtangle_milestone, out->latest_solid_subtangle_milestone);
-  if (ret != RC_OK) {
-    goto end;
-  }
-  ret = json_get_uint32(json_obj, latest_solid_subtangle_milestone_idx, &out->latest_solid_subtangle_milestone_index);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_string_hash_to_flex_trits(json_obj, latest_solid_subtangle_milestone, out->latest_solid_subtangle_milestone);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_string_hash_to_flex_trits(json_obj, latest_solid_subtangle_milestone, out->latest_solid_subtangle_milestone);
+  
+  //ret = json_get_uint32(json_obj, latest_solid_subtangle_milestone_idx, &out->latest_solid_subtangle_milestone_index);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint32(json_obj, latest_solid_subtangle_milestone_idx, &out->latest_solid_subtangle_milestone_index);
 
-  ret = json_get_uint32(json_obj, milestone_start_idx, &out->milestone_start_index);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint32(json_obj, milestone_start_idx, &out->milestone_start_index);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint32(json_obj, milestone_start_idx, &out->milestone_start_index);
 
-  ret = json_get_uint16(json_obj, neighbors, &out->neighbors);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint16(json_obj, neighbors, &out->neighbors);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint16(json_obj, neighbors, &out->neighbors);
 
-  ret = json_get_uint16(json_obj, packets_queue_size, &out->packets_queue_size);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint16(json_obj, packets_queue_size, &out->packets_queue_size);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint16(json_obj, packets_queue_size, &out->packets_queue_size);
 
-  ret = json_get_uint64(json_obj, time, &out->time);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint64(json_obj, time, &out->time);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint64(json_obj, time, &out->time);
 
-  ret = json_get_uint32(json_obj, tips, &out->tips);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint32(json_obj, tips, &out->tips);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint32(json_obj, tips, &out->tips);
 
-  ret = json_get_uint32(json_obj, transactions_to_request, &out->transactions_to_request);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_get_uint32(json_obj, transactions_to_request, &out->transactions_to_request);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_get_uint32(json_obj, transactions_to_request, &out->transactions_to_request);
 
-  ret = json_string_array_to_utarray(json_obj, features, out->features);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_string_array_to_utarray(json_obj, features, out->features);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_string_array_to_utarray(json_obj, features, out->features);
 
-  ret = json_string_hash_to_flex_trits(json_obj, coordinator_address, out->coordinator_address);
-  if (ret != RC_OK) {
-    goto end;
-  }
+  //ret = json_string_hash_to_flex_trits(json_obj, coordinator_address, out->coordinator_address);
+  //if (ret != RC_OK) {
+  //  goto end;
+  //}
+  json_string_hash_to_flex_trits(json_obj, coordinator_address, out->coordinator_address);
 
 end:
   cJSON_Delete(json_obj);
